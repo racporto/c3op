@@ -1,0 +1,109 @@
+<div id="MainHeader">
+  <h1>C3op</h1>
+</div>
+
+<?php 
+/*
+ * If exists projects list
+ */
+if (is_array($this->projectsList)) {
+?>
+
+<?php 
+/*
+ * if there is projects in list
+ */
+    if (count($this->projectsList)) {
+?>
+          <div class="Area">
+            <h2>Projetos</h2>
+            <div class="">
+              <table class="flex1">
+            		<thead>
+            			<tr>
+            				<th width="220">Projeto</th>
+            				<th width="80">Início</th>
+            				<th width="100">Valor</th>
+            			</tr>
+            		</thead>
+            		<tbody>
+<?php 
+/*
+ * iterate list and print title
+ */
+        while (list(, $projectData) = each($this->projectsList)) {
+?>
+            			<tr>
+            				<td><?php print($projectData['title']) ?></td>
+            				<td><?php print($projectData['beginDate']) ?></td>
+            				<td><?php print($projectData['value']) ?></td>
+                    <td>
+                      <a href="#" class="anchorclass" rel="submenu1">Opções</a> 
+                      <div id="submenu1" class="anylinkcss">
+                          <ul>
+<?php if (isset($projectData['editLink'])) { ?>
+                            <li>
+                              <a href="<?php print($projectData['editLink']) ?>">Editar</a>
+                            </li>
+<?php } ?>
+<?php if (isset($projectData['linkReceivableCreate'])) { ?>
+                            <li>
+                              <a href="<?php print($projectData['linkReceivableCreate']) ?>">Prever Recebimento</a>
+                            </li>
+<?php } ?>
+<?php if (isset($projectData['linkActionCreate'])) { ?>
+                            <li>
+                              <a href="<?php print($projectData['linkActionCreate']) ?>">Criar Ação</a>
+                            </li>
+<?php } ?>
+                            <li>
+                              <a href="<?php print($projectData['linkProjectDetail']) ?>">Detalhamento do Projeto (<?php print($projectData['actionsCount']) ?>)</a>
+                            </li>
+                          </ul>
+                      </div>
+                    </td>
+            			</tr>
+            		</tbody>
+<?php
+}  // loop iterate list and print titlei
+?>
+    
+            	</table>
+            </div><!-- .flexigrid -->
+<script type="text/javascript">
+  $('.flex1').flexigrid({
+			searchitems : [ {
+				display : 'ISO',
+				name : 'iso'
+			}, {
+				display : 'Name',
+				name : 'name',
+				isdefault : true
+			} ],
+			sortname : "iso",
+			sortorder : "asc",
+			usepager : true,
+			useRp : true,
+			rp : 10,
+			showTableToggleBtn : true,
+		});
+</script>
+          </div><!-- Area -->  
+<?php
+    } else { // end else there is projects in list
+?>
+    <?php print("Não há projetos cadastrados.") ?>
+    
+<?php
+    } // end else there is projects in list
+?>
+<?php
+} else { // else exists projects list 
+?>
+    <?php print("Não existe lista de projetos cadastrados.") ?>
+
+    <?php
+} // end exists projects list
+?>
+<p />
+<a href="<?php print($this->createProjectLink) ?>">Criar Novo Projeto</a>

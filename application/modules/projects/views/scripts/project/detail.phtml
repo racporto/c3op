@@ -1,0 +1,80 @@
+<?php 
+/*
+ * If exists projects list
+ */
+if (is_array($this->projectInfo)) {
+    $projectData = $this->projectInfo;
+?>
+<p class="project_title">Projeto: <?php print($projectData['title']) ?>
+</p>
+<p class="info">
+Data do contrato: <?php print($projectData['beginDate']) ?><br />
+Valor do contrato:    <?php print($projectData['value']) ?><br />
+
+<?php
+if ($projectData['linkReceivables'] != "") {
+?>    
+<a class="info" href="<?php print($projectData['linkReceivables']) ?>">Consultar recebimentos do Projeto</a><br />
+<?php
+}
+
+?>
+<?php
+if ($projectData['linkPayables'] != "") {
+?>    
+<a class="info" href="<?php print($projectData['linkPayables']) ?>">Consultar ações realizadas</a><br />
+<?php
+}
+?>
+<?php
+if ($projectData['linkUnacknowledged'] != "") {
+?>    
+<a class="info" href="<?php print($projectData['linkUnacknowledged']) ?>">Ações com início a confirmar</a><br />
+<?php
+}
+?>
+<?php
+if ($projectData['linkTree'] != "") {
+?>    
+<a class="info" href="<?php print($projectData['linkTree']) ?>">Árvore de ações</a><br />
+<?php
+}
+?>
+</p>
+<h2>Produtos do Projeto</h2>
+<?php 
+/*
+ * iterate list and print title
+ */
+
+    $actionsList = $projectData['actionsList'];
+    
+    while (list(, $actionInfo) = each($actionsList)) {
+?>
+<p class="project_product_line">
+<?php print($actionInfo['title']) ?>&nbsp;<?php print($actionInfo['specialAction']) ?> | 
+(<?php print($actionInfo['brood']) ?>) | 
+<?php if (isset($actionInfo['editLink'])) { ?>
+<a href="<?php print($actionInfo['editLink']) ?>">Editar</a>
+<?php } ?>
+</p>
+
+    
+<?php
+}  // loop iterate list and print titlei
+?>
+
+
+
+<p />
+<br /><br /><a href="<?php print($this->projectInfo['linkActionCreate']) ?>">Criar Nova Ação</a>
+
+    
+<?php
+} else { // else exists projects list 
+?>
+    <?php print("Não há informações para este projeto.") ?>
+
+    <?php
+} // end exists projects list
+?>

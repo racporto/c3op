@@ -1,0 +1,13 @@
+$ cat .gitignore
+
+# Ignorar arquivos espec�ficos
+.zfproject.xml
+application/Bootstrap.php
+application/configs/application.ini
+public/index.php
+
+# Ignorar todos os diret�rios e arquivos em um diret�rio.
+nbproject/**/* 
+/library/C3op/Form/Decorators.php
+/tests/log/
+/nbproject/
