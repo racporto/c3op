@@ -7,6 +7,7 @@ class C3op_Form_ContactCreate extends Zend_Form
         // initialize form
         $this->setName('newContactForm')
             ->setAction('/register/contact/create')
+            ->setDecorators(array('FormElements',array('HtmlTag', array('tag' => 'div', 'class' => 'Area')),'Form'))
             ->setMethod('post');
         
         // create text input for name
@@ -14,7 +15,13 @@ class C3op_Form_ContactCreate extends Zend_Form
 //        $nameValidator = new Zend_Validate_Regex("/^[0-9a-zA-ZÀ-ú]+[0-9A-Za-zÀ-ú\'\[\]\(\)\-\.\,\:\;\!\? ]{1,50}$/");
         $nameValidator = new C3op_Register_ContactValidName();
         $name->setLabel('Nome:')
-            ->setOptions(array('size' => '50'))
+              ->setDecorators(array(
+                  'ViewHelper',
+                  'Errors',
+                  array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'eleven columns omega')),
+                  array('Label', array('tag' => 'div', 'tagClass' => 'three columns alpha Right')),
+              ))
+            ->setOptions(array('class' => 'eleven columns alpha omega'))
             ->setRequired(true)
             ->addValidator($nameValidator)
 //            ->addFilter('HtmlEntities')
@@ -25,6 +32,13 @@ class C3op_Form_ContactCreate extends Zend_Form
         
         $type = new Zend_Form_Element_Select('type');
         $type->setLabel('Tipo')
+                ->setDecorators(array(
+                    'ViewHelper',
+                    'Errors',
+                    array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'eleven columns omega')),
+                    array('Label', array('tag' => 'div', 'tagClass' => 'three columns alpha Right')),
+                ))
+                ->setOptions(array('class' => 'eleven columns alpha omega'))
                 ->setRequired(true);
         $titleTypes = C3op_Register_ContactTypes::AllTitles();
         $type->addMultiOption(null, "(escolha um tipo)");
@@ -35,8 +49,14 @@ class C3op_Form_ContactCreate extends Zend_Form
                 
         // create submit button
         $submit = new Zend_Form_Element_Submit('submit');
-        $submit->setLabel('Salvar')
-            ->setOptions(array('class' => 'submit'));
+        $submit->setLabel('Gravar')
+              ->setDecorators(array(
+                  'ViewHelper',
+                  'Errors',
+                  array(array('data' => 'HtmlTag'), array('tag' => 'div', 'class' => 'five columns inset-by-six omega')),
+                  array('Label', array('tag' => 'div', 'tagClass' => 'three columns alpha Invisible')),
+              ))
+            ->setOptions(array('class' => 'submit two columns alpha omega'));
         $this->addElement($submit);
 
     }

@@ -5,8 +5,10 @@
 if (is_array($this->projectInfo)) {
     $projectData = $this->projectInfo;
 ?>
-<p class="project_title">Projeto: <?php print($projectData['title']) ?>
-</p>
+<div id="MainHeader">
+  <h1>Projeto: <?php print($projectData['title']) ?></h1>
+</div>
+
 <p class="info">
 Data do contrato: <?php print($projectData['beginDate']) ?><br />
 Valor do contrato:    <?php print($projectData['value']) ?><br />

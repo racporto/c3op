@@ -5,7 +5,7 @@ class C3op_Form_ProjectCreate extends Zend_Form
     {
         $this->setName('newProjectForm')
             ->setAction('/projects/project/create')
-            ->setDecorators(array('FormElements',array('HtmlTag', array('tag' => 'div')),'Form'))
+            ->setDecorators(array('FormElements',array('HtmlTag', array('tag' => 'div', 'class' => 'Area')),'Form'))
             ->setMethod('post');
 
         $title = new Zend_Form_Element_Text('title');
@@ -29,23 +29,28 @@ class C3op_Form_ProjectCreate extends Zend_Form
                 ->setDecorators(array(
                     'ViewHelper',
                     'Errors',
-                    array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'eleven columns omega')),
+                    array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'nine columns')),
+                    array('Description', array('escape' => false, 'tag' => 'div', 'class' => 'two columns omega')),
                     array('Label', array('tag' => 'div', 'tagClass' => 'three columns alpha Right')),
                 ))
-                ->setOptions(array('class' => 'eleven columns alpha omega'))
+                ->setOptions(array('class' => 'nine columns alpha omega'))
+                ->setDescription('<a href="/register/institution/create" class="two columns button alpha omega">Novo cliente</a>')
                 ->setRegisterInArrayValidator(false);
         $client->addMultiOption(0, "escolha um cliente");
         $this->addElement($client);
         
+  
         $ourResponsible = new Zend_Form_Element_Select('ourResponsible');
         $ourResponsible->setLabel('Responsável pelo IETS: ')
                 ->setDecorators(array(
                     'ViewHelper',
                     'Errors',
-                    array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'eleven columns omega')),
+                    array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'nine columns')),
+                    array('Description', array('escape' => false, 'tag' => 'div', 'class' => 'two columns omega')),
                     array('Label', array('tag' => 'div', 'tagClass' => 'three columns alpha Right')),
                 ))
-                ->setOptions(array('class' => 'eleven columns alpha omega'))
+                ->setOptions(array('class' => 'nine columns alpha omega'))
+                ->setDescription('<a href="/register/contact/create" class="two columns button alpha omega">Novo responsável</a>')
                 ->setRegisterInArrayValidator(false);
         $ourResponsible->addMultiOption(0, "escolha uma pessoa");
         $this->addElement($ourResponsible);
@@ -55,10 +60,12 @@ class C3op_Form_ProjectCreate extends Zend_Form
                 ->setDecorators(array(
                     'ViewHelper',
                     'Errors',
-                    array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'eleven columns omega')),
+                    array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'nine columns')),
+                    array('Description', array('escape' => false, 'tag' => 'div', 'class' => 'two columns omega')),
                     array('Label', array('tag' => 'div', 'tagClass' => 'three columns alpha Right')),
                 ))
-                ->setOptions(array('class' => 'eleven columns alpha omega'))
+                ->setOptions(array('class' => 'nine columns alpha omega'))
+                ->setDescription('<a href="/register/contact/create" class="two columns button alpha omega">Novo responsável</a>')
                 ->setRegisterInArrayValidator(false);
         $responsibleAtClient->addMultiOption(0, "escolha uma pessoa");
         $this->addElement($responsibleAtClient);
@@ -83,7 +90,7 @@ class C3op_Form_ProjectCreate extends Zend_Form
               ->setDecorators(array(
                   'ViewHelper',
                   'Errors',
-                  array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'two columns inset-by-five alpha omega')),
+                  array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'two columns inset-by-five omega')),
                   array('Label', array('tag' => 'div', 'tagClass' => 'two columns Right')),
               ))
             ->setOptions(array('class' => 'two columns alpha omega'))
@@ -98,7 +105,7 @@ class C3op_Form_ProjectCreate extends Zend_Form
               ->setDecorators(array(
                   'ViewHelper',
                   'Errors',
-                  array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'two columns omega')),
+                  array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'two columns')),
                   array('Label', array('tag' => 'div', 'tagClass' => 'three columns alpha Right')),
               ))
             ->setOptions(array('class' => 'two columns alpha omega'))
@@ -116,7 +123,7 @@ class C3op_Form_ProjectCreate extends Zend_Form
               ->setDecorators(array(
                   'ViewHelper',
                   'Errors',
-                  array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'two columns inset-by-four omega')),
+                  array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'three columns inset-by-four omega')),
                   array('Label', array('tag' => 'div', 'tagClass' => 'two columns Right')),
               ))
             ->setOptions(array('class' => 'three columns alpha omega'))
@@ -129,14 +136,14 @@ class C3op_Form_ProjectCreate extends Zend_Form
         $this->addElement($status);
 
         $contractNature = new Zend_Form_Element_Select('contractNature');
-        $contractNature->setLabel('Natureza do Contrato')
+        $contractNature->setLabel('Natureza do Contrato:')
               ->setDecorators(array(
                   'ViewHelper',
                   'Errors',
-                  array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'four columns alpha')),
+                  array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'four columns')),
                   array('Label', array('tag' => 'div', 'tagClass' => 'three columns alpha Right')),
               ))
-            ->setOptions(array('class' => 'four columns omega'))
+            ->setOptions(array('class' => 'four columns alpha omega'))
         ;
         $titleTypes = C3op_Projects_ContractNatureTypes::AllTitles();
         $contractNature->addMultiOption(null, "(escolha um tipo)");
@@ -146,14 +153,14 @@ class C3op_Form_ProjectCreate extends Zend_Form
         $this->addElement($contractNature);
         
         $areaActivity = new Zend_Form_Element_Select('areaActivity');
-        $areaActivity->setLabel('Área de atuação')
+        $areaActivity->setLabel('Área de atuação:')
               ->setDecorators(array(
                   'ViewHelper',
                   'Errors',
-                  array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'five columns alpha omega')),
-                  array('Label', array('tag' => 'div', 'tagClass' => 'two columns alpha Right')),
+                  array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'five columns omega')),
+                  array('Label', array('tag' => 'div', 'tagClass' => 'two columns Right')),
               ))
-            ->setOptions(array('class' => 'five columns omega'))
+            ->setOptions(array('class' => 'five columns alpha omega'))
         ;
         $titleTypes = C3op_Projects_AreaActivityTypes::AllTitles();
         $areaActivity->addMultiOption(null, "(escolha uma área)");
@@ -167,10 +174,10 @@ class C3op_Form_ProjectCreate extends Zend_Form
               ->setDecorators(array(
                   'ViewHelper',
                   'Errors',
-                  array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'three columns alpha omega')),
+                  array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'two columns')),
                   array('Label', array('tag' => 'div', 'tagClass' => 'three columns alpha Right')),
               ))
-            ->setOptions(array('class' => 'three columns omega'))
+            ->setOptions(array('class' => 'two columns alpha omega'))
             ->setRequired(false)
             ->addValidator('Regex', false, array(
                 'pattern' => '/^[0-9]*\.?[0-9]*$/'
@@ -182,10 +189,10 @@ class C3op_Form_ProjectCreate extends Zend_Form
               ->setDecorators(array(
                   'ViewHelper',
                   'Errors',
-                  array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'three columns inset-by-two alpha omega')),
+                  array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'two columns inset-by-three omega')),
                   array('Label', array('tag' => 'div', 'tagClass' => 'three columns alpha Right')),
               ))
-            ->setOptions(array('class' => 'three columns omega'))
+            ->setOptions(array('class' => 'two columns alpha omega'))
             ->setRequired(false)
             ->addValidator('Regex', false, array(
                 'pattern' => '/^[0-9]*\.?[0-9]*$/'
@@ -199,11 +206,11 @@ class C3op_Form_ProjectCreate extends Zend_Form
               ->setDecorators(array(
                   'ViewHelper',
                   'Errors',
-                  array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'eleven columns alpha omega')),
+                  array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'eleven columns omega')),
                   array('Label', array('tag' => 'div', 'tagClass' => 'three columns alpha Right')),
               ))
             ->setAttrib('rows','8')
-            ->setOptions(array('class' => 'eleven columns omega'))
+            ->setOptions(array('class' => 'eleven columns alpha omega'))
             ->setRequired(false)
             ->addFilter('HtmlEntities')
             ->addFilter('StringTrim');
@@ -214,11 +221,11 @@ class C3op_Form_ProjectCreate extends Zend_Form
               ->setDecorators(array(
                   'ViewHelper',
                   'Errors',
-                  array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'eleven columns alpha omega')),
+                  array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'eleven columns omega')),
                   array('Label', array('tag' => 'div', 'tagClass' => 'three columns alpha Right')),
               ))
             ->setAttrib('rows','8')
-            ->setOptions(array('class' => 'eleven columns omega'))
+            ->setOptions(array('class' => 'eleven columns alpha omega'))
             ->setRequired(false)
             ->addFilter('HtmlEntities')
             ->addFilter('StringTrim');
@@ -229,11 +236,11 @@ class C3op_Form_ProjectCreate extends Zend_Form
               ->setDecorators(array(
                   'ViewHelper',
                   'Errors',
-                  array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'eleven columns alpha omega')),
+                  array(array('data' => 'HtmlTag'), array('tagClass' => 'div', 'class' => 'eleven columns omega')),
                   array('Label', array('tag' => 'div', 'tagClass' => 'three columns alpha Right')),
               ))
             ->setAttrib('rows','8')
-            ->setOptions(array('class' => 'eleven columns omega'))
+            ->setOptions(array('class' => 'eleven columns alpha omega'))
             ->setRequired(false)
             ->addFilter('HtmlEntities')
             ->addFilter('StringTrim');
@@ -245,10 +252,10 @@ class C3op_Form_ProjectCreate extends Zend_Form
               ->setDecorators(array(
                   'ViewHelper',
                   'Errors',
-                  array(array('data' => 'HtmlTag'), array('tag' => 'div', 'class' => 'five columns inset-by-six alpha omega')),
+                  array(array('data' => 'HtmlTag'), array('tag' => 'div', 'class' => 'five columns inset-by-six omega')),
                   array('Label', array('tag' => 'div', 'tagClass' => 'three columns alpha Invisible')),
               ))
-            ->setOptions(array('class' => 'submit two columns'));
+            ->setOptions(array('class' => 'submit two columns alpha omega'));
         $this->addElement($submit);
 
 

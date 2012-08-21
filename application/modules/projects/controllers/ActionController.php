@@ -104,7 +104,33 @@ class Projects_ActionController extends Zend_Controller_Action
         }
     }
     
-    public function detailAction()
+                          /*
+                           *  dados #MOCK
+                           */                           
+    public function detailMockAction()
+     {
+          $actionData["title"] = "Acao qq";
+          
+          $listSubActions[1] = "outra acao";
+          $listSubActions[2] = "mais uma acao";
+          
+          $actionData["listSubActions"] = $listSubActions;
+     
+          $this->view->actionData = $actionData;
+     
+     }
+     
+     public function detailAction()
+     {
+        $this->detailMockAction();
+     }
+    
+                          /*
+                           *  fim do dados #MOCK
+                           */                           
+
+
+    public function rodDetailAction()
     {
         $actionsList = array();
         $this->initActionMapper();

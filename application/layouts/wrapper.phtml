@@ -6,6 +6,7 @@
 <html>
   <head>
     <title><?php echo $this->layout()->title?></title>
+    <!-- [# Não está pegando o título ] -->
 <?php include ("meta.phtml") ?>
 
     <meta charset="utf-8">
@@ -20,7 +21,6 @@
     <link rel="stylesheet" type="text/css" href="/css/skeleton.css">
     <link rel="stylesheet" type="text/css" href="/css/formalize.css">
     <link rel="stylesheet" type="text/css" href="/css/layout.css">
-    <link rel="stylesheet" type="text/css" href="/css/flexigrid.css" />
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -37,7 +37,6 @@
     ================================================== -->
     <script type="text/javascript" src="/js/jquery.js"></script>
     <script type="text/javascript" src="/js/jquery.formalize.js"></script>
-    <script type="text/javascript" src="/js/flexigrid.js"></script>
     
 <?php
 $this->dojo()->setDjConfigOption('usePlainJson',true)
@@ -56,8 +55,9 @@ echo $this->dojo();
       anylinkcssmenu.init("anchorclass")
     </script>
 
-    <script type="text/javascript" src="/js/flexigrid.js"></script>
-
+    <link rel="stylesheet" type="text/css" href="/css/datatables.css" />
+		<script type="text/javascript" src="/public/js/jquery.dataTables.js"></script>
+		<script type="text/javascript" src="/public/js/dataTables_init.js"></script>
 
   </head>
   <body>

@@ -24,6 +24,9 @@ class Register_InstitutionController extends Zend_Controller_Action
                 'name' => $thisInstitution->GetShortName(),
                 'editLink' => '/register/institution/edit/?id=' . $id   ,
                 'type' => C3op_Register_InstitutionTypes::TitleForType($thisInstitution->GetType()),
+                'city' => $thisInstitution->GetCity(),
+                'state' => $thisInstitution->GetState(),
+                'relationshipType' => C3op_Register_RelationshipTypes::TitleForType($thisInstitution->GetRelationshipType()),
             );
         }
         

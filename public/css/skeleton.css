@@ -75,11 +75,27 @@
 .container .offset-by-one-third             { margin-left: 383px; }
 .container .offset-by-two-thirds            { margin-left: 756px; }
 
+.container .offset-by-one.alpha             { margin-left:   70px; }
+.container .offset-by-two.alpha             { margin-left:  140px; }
+.container .offset-by-three.alpha           { margin-left:  210px; }
+.container .offset-by-four.alpha            { margin-left:  280px; }
+.container .offset-by-five.alpha            { margin-left:  350px; }
+.container .offset-by-six.alpha             { margin-left:  420px; }
+.container .offset-by-seven.alpha           { margin-left:  490px; }
+.container .offset-by-eight.alpha           { margin-left:  560px; }
+.container .offset-by-nine.alpha            { margin-left:  630px; }
+.container .offset-by-ten.alpha             { margin-left:  700px; }
+.container .offset-by-eleven.alpha          { margin-left:  770px; }
+.container .offset-by-twelve.alpha          { margin-left:  840px; }
+.container .offset-by-thirteen.alpha        { margin-left:  910px; }
+.container .offset-by-fourteen.alpha        { margin-left:  980px; }
+.container .offset-by-fifteen.alpha         { margin-left: 1050px; }
+
 /* Insets */
 .container .inset-by-one                   { margin-right:   80px; }
 .container .inset-by-two                   { margin-right:  150px; }
 .container .inset-by-three                 { margin-right:  220px; }
-.container .inset-by-four                  { margin-right:  290px; }
+.container .inset-by-four                  { margin-right:  280px; }
 .container .inset-by-five                  { margin-right:  360px; }
 .container .inset-by-six                   { margin-right:  430px; }
 .container .inset-by-seven                 { margin-right:  500px; }
@@ -94,6 +110,22 @@
 
 .container .inset-by-one-third             { margin-right: 383px; }
 .container .inset-by-two-thirds            { margin-right: 756px; }
+
+.container .inset-by-one.omega             { margin-right:   70px; }
+.container .inset-by-two.omega             { margin-right:  140px; }
+.container .inset-by-three.omega           { margin-right:  210px; }
+.container .inset-by-four.omega            { margin-right:  270px; }
+.container .inset-by-five.omega            { margin-right:  350px; }
+.container .inset-by-six.omega             { margin-right:  420px; }
+.container .inset-by-seven.omega           { margin-right:  490px; }
+.container .inset-by-eight.omega           { margin-right:  560px; }
+.container .inset-by-nine.omega            { margin-right:  630px; }
+.container .inset-by-ten.omega             { margin-right:  700px; }
+.container .inset-by-eleven.omega          { margin-right:  770px; }
+.container .inset-by-twelve.omega          { margin-right:  840px; }
+.container .inset-by-thirteen.omega        { margin-right:  910px; }
+.container .inset-by-fourteen.omega        { margin-right:  980px; }
+.container .inset-by-fifteen.omega         { margin-right: 1050px; }
 
 
 /* - #Tablet (Portrait) ----------------------------------------------------- */

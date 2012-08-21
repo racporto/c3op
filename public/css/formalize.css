@@ -373,3 +373,9 @@ optgroup::-moz-focus-inner {
   background: #eeeeee;
 }
 
+input.error,
+select.error,
+textarea.error {
+background-color:#fee
+}
+
